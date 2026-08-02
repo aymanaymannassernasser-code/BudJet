@@ -130,7 +130,7 @@
     const box = $('#onboardBanner');
     box.innerHTML = '';
     if (!s.salaryUSD) {
-      box.innerHTML += `<div class="banner">✈️ <div><strong>Set your flight plan.</strong> Add your monthly USD salary and today's exchange rate in Settings to unlock the full dashboard.</div></div>`;
+      box.innerHTML += `<div class="banner"><div><strong>Set up your basics.</strong> Add your monthly USD salary and today's exchange rate in Settings to unlock the full dashboard.</div></div>`;
     }
     // Recurring due but not logged this month
     const mk = monthKey(todayISO(), s.monthStartDay || 1);
@@ -143,7 +143,7 @@
     });
     if (dueUnlogged.length) {
       const accMap = accountsById();
-      box.innerHTML += `<div class="banner warn">🛬 <div style="flex:1;">
+      box.innerHTML += `<div class="banner warn"><div style="flex:1;">
         <strong>${dueUnlogged.length} recurring item${dueUnlogged.length > 1 ? 's' : ''} due this month</strong>
         <div style="margin-top:8px; display:flex; flex-direction:column; gap:6px;">
           ${dueUnlogged.map((r) => `
@@ -175,7 +175,7 @@
         icon = c ? c.icon : '❓'; title = c ? c.name : 'Uncategorized'; amtClass = 'amt-out'; amtSign = '-';
         sub = `${acc.name || 'Account'} · ${new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
       } else {
-        icon = '✈️'; title = `${acc.name || '?'} → ${(accMap[t.toAccountId] || {}).name || '?'}`; amtClass = 'amt-transfer'; amtSign = '';
+        icon = '⇄'; title = `${acc.name || '?'} → ${(accMap[t.toAccountId] || {}).name || '?'}`; amtClass = 'amt-transfer'; amtSign = '';
         sub = `Converted · ${new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
       }
       const amtPrimary = t.type === 'transfer'
@@ -260,7 +260,7 @@
     const box = $('#goalsList');
     const rate = state.settings.lastKnownRate || 1;
     if (!state.goals.length) {
-      box.innerHTML = `<div class="card empty"><div class="glyph">🛫</div><div class="msg">No goals yet. Where are you flying to?</div></div>`;
+      box.innerHTML = `<div class="card empty"><div class="glyph">🎯</div><div class="msg">No goals yet.</div></div>`;
     } else {
       box.innerHTML = state.goals.map((g) => {
         const pct = Math.min(100, Math.round(((g.saved || 0) / g.targetAmount) * 100));

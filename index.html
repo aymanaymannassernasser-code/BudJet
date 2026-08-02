@@ -21,10 +21,7 @@
   <header class="topbar">
     <div class="brand">
       <div class="brand-mark"></div>
-      <div>
-        <div class="brand-name">BudJet</div>
-        <div class="brand-tag">Flight log for your money</div>
-      </div>
+      <div class="brand-name">BudJet</div>
     </div>
     <button class="icon-btn" id="btnSettingsShortcut" aria-label="Settings">⚙️</button>
   </header>
@@ -39,13 +36,13 @@
       <div class="gauge-row">
         <div class="gauge-card usd">
           <div class="glow"></div>
-          <div class="gauge-label">USD altitude</div>
+          <div class="gauge-label">USD balance</div>
           <div class="gauge-value num" id="gaugeUSD">$0</div>
           <div class="gauge-sub" id="gaugeUSDSub">across bank + cash</div>
         </div>
         <div class="gauge-card egp">
           <div class="glow"></div>
-          <div class="gauge-label">EGP ground level</div>
+          <div class="gauge-label">EGP balance</div>
           <div class="gauge-value num" id="gaugeEGP">E£0</div>
           <div class="gauge-sub" id="gaugeEGPSub">across bank + cash</div>
         </div>
@@ -56,7 +53,7 @@
         <div class="heading-dial">
           <div class="dial"><div class="dial-needle" id="rateDialNeedle"></div><div class="dial-center"></div></div>
           <div class="heading-text">
-            <div class="heading-label">Current heading</div>
+            <div class="heading-label">Exchange rate</div>
             <div class="heading-rate num" id="rateDisplay">1 USD = 48.50 EGP</div>
             <div class="heading-sub" id="rateAsOf">Tap to update rate</div>
           </div>
@@ -90,7 +87,7 @@
 
     <!-- ===================== LOG ===================== -->
     <section id="tab-log">
-      <div class="section-head"><h2>Flight log</h2></div>
+      <div class="section-head"><h2>Log</h2></div>
       <div class="field" style="margin-bottom:10px;">
         <select id="logFilter">
           <option value="all">All entries</option>
@@ -104,10 +101,10 @@
 
     <!-- ===================== BUDGETS ===================== -->
     <section id="tab-budgets">
-      <div class="section-head"><h2>Cargo manifest</h2><span class="pill">Monthly budgets, EGP</span></div>
+      <div class="section-head"><h2>Budgets</h2><span class="pill">Monthly limits, EGP</span></div>
       <div class="card" id="budgetList"></div>
 
-      <div class="section-head"><h2>Recurring flight plan</h2><button class="pill" id="btnAddRecurring" style="cursor:pointer;">+ Add</button></div>
+      <div class="section-head"><h2>Recurring</h2><button class="pill" id="btnAddRecurring" style="cursor:pointer;">+ Add</button></div>
       <div class="card" id="recurringList"></div>
     </section>
 
@@ -176,7 +173,7 @@
         <button class="btn btn-danger btn-block" id="btnResetAll">Erase all data</button>
       </div>
 
-      <div style="text-align:center; padding:20px 0 4px;" class="small muted">BudJet · offline-first · your data never leaves this device</div>
+      <div style="text-align:center; padding:20px 0 4px;" class="small muted">Your data stays on this device</div>
     </section>
 
   </main>
