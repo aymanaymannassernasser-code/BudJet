@@ -130,7 +130,7 @@
     const box = $('#onboardBanner');
     box.innerHTML = '';
     if (!s.salaryUSD) {
-      box.innerHTML += `<div class="banner"><div><strong>Set up your basics.</strong> Add your monthly USD salary and today's exchange rate in Settings to unlock the full dashboard.</div></div>`;
+      box.innerHTML += `<div class="banner"><div><strong>Set up your basics.</strong></div></div>`;
     }
     // Recurring due but not logged this month
     const mk = monthKey(todayISO(), s.monthStartDay || 1);
@@ -381,14 +381,13 @@
     $('#fieldToAccount').style.display = type === 'transfer' ? 'block' : 'none';
     $('#fieldToAmount').style.display = type === 'transfer' ? 'block' : 'none';
     $('#fieldCategory').style.display = type === 'transfer' ? 'none' : 'block';
-    $('#fieldRate').style.display = 'block';
+    // For transfers the rate is derived automatically from the two amounts entered,
+    // so the manual rate field is hidden — showing it was misleading since typing
+    // into it had no effect on the saved transaction.
+    $('#fieldRate').style.display = type === 'transfer' ? 'none' : 'block';
     $('#labelAccountFrom').textContent = type === 'transfer' ? 'From account' : 'Account';
     $('#labelAmount').textContent = acc ? `Amount (${acc.currency})` : 'Amount';
-    if (type === 'transfer') {
-      $('#rateHintText').textContent = "💡 Rate is calculated from the amounts you enter — adjust either side to match your actual conversion.";
-    } else {
-      $('#rateHintText').textContent = "💡 Enter the rate you actually got — it's saved with this entry forever, so past spending never re-prices itself.";
-    }
+    $('#rateHintText').textContent = "💡 Enter the rate you actually got — it's saved with this entry forever, so past spending never re-prices itself.";
   }
 
   function openTxnSheet(id) {

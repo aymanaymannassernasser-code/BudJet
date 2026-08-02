@@ -1,5 +1,5 @@
 {
-  "name": "BudJet — Dual Currency Budget",
+  "name": "BudJet",
   "short_name": "BudJet",
   "description": "Track salary in USD, spending in EGP, and everything in between.",
   "start_url": "./index.html",
