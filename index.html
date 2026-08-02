@@ -56,7 +56,7 @@
             <div class="dial"><div class="dial-needle" id="rateDialNeedle"></div><div class="dial-center"></div></div>
             <div class="heading-text">
               <div class="heading-label">Exchange rate</div>
-              <div class="heading-rate num" id="rateDisplay">1 USD = 48.50 EGP</div>
+              <div class="heading-rate num" id="rateDisplay">1 USD = 51.00 EGP</div>
               <div class="heading-sub" id="rateAsOf">Tap to update rate</div>
             </div>
           </div>
@@ -127,6 +127,12 @@
     <!-- ===================== SETTINGS ===================== -->
     <section id="tab-settings">
       <div class="section-head"><h2>Instrument settings</h2></div>
+
+      <div class="card" id="installCard" style="display:none;">
+        <div class="card-title">Install</div>
+        <div class="small muted" style="margin-bottom:10px;">Install BudJet as an app on this device for offline access and a home-screen icon.</div>
+        <button class="btn btn-primary btn-block" id="btnInstallApp">Install app</button>
+      </div>
 
       <div class="card">
         <div class="card-title">Exchange rate</div>

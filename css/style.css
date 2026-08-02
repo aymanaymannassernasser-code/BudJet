@@ -53,6 +53,7 @@ button, input, select, textarea { font-family: inherit; }
   flex-direction: column;
   position: relative;
   padding-bottom: 84px;
+  overflow-x: hidden;
 }
 
 header.topbar {
@@ -436,12 +437,13 @@ nav.tabbar {
 /* ---------- Progress / goals ---------- */
 
 .goal-card { margin-bottom: 0; }
-.goal-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
-.goal-name { font-weight: 600; font-size: 0.92rem; }
-.goal-deadline { font-size: 0.68rem; color: var(--paper-faint); }
+.goal-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; gap: 8px; }
+.goal-name { font-weight: 600; font-size: 0.92rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.goal-deadline { font-size: 0.68rem; color: var(--paper-faint); flex-shrink: 0; white-space: nowrap; }
 .goal-track { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
 .goal-fill { height: 100%; background: linear-gradient(90deg, var(--usd), var(--brass)); border-radius: 4px; }
-.goal-nums { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--paper-dim); }
+.goal-nums { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--paper-dim); gap: 8px; }
+.goal-nums span:last-child { text-align: right; flex-shrink: 0; }
 
 /* ---------- Toast ---------- */
 
@@ -494,6 +496,7 @@ nav.tabbar {
 }
 
 .chart-wrap { position: relative; width: 100%; height: 180px; }
+.chart-wrap canvas { display: block; width: 100%; height: 100%; }
 .chart-wrap.donut { display: flex; align-items: center; justify-content: center; height: 160px; }
 .chart-wrap.donut canvas { width: 160px; height: 160px; }
 

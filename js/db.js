@@ -125,7 +125,7 @@ async function ensureSeeded() {
     id: 'app',
     baseDisplayCurrency: 'EGP',
     monthStartDay: 1,
-    lastKnownRate: 48.5, // EGP per 1 USD — placeholder, user should update
+    lastKnownRate: 51.00, // EGP per 1 USD — placeholder, user should update
     salaryUSD: null,
     onboarded: false
   });

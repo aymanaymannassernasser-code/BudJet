@@ -1,6 +1,6 @@
 // BudJet service worker — offline-first, app-shell caching.
 // Bump this on every deploy so clients pick up new files.
-const CACHE_VERSION = 'budjet-v2';
+const CACHE_VERSION = 'budjet-v5';
 const APP_SHELL = [
   './',
   './index.html',

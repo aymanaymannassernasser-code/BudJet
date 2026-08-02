@@ -745,6 +745,37 @@
     location.reload();
   });
 
+  // ---------- Install prompt (Android/Chrome) ----------
+  // Chrome only shows its automatic install banner after engagement heuristics
+  // are met, and throttles it once dismissed. Capturing the event ourselves
+  // gives a guaranteed, always-visible "Install app" button instead.
+  let deferredInstallPrompt = null;
+  const alreadyInstalled = () =>
+    window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    if (alreadyInstalled()) return;
+    deferredInstallPrompt = e;
+    const card = $('#installCard');
+    if (card) card.style.display = 'block';
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    const card = $('#installCard');
+    if (card) card.style.display = 'none';
+    toast('BudJet installed');
+  });
+
+  $('#btnInstallApp')?.addEventListener('click', async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    $('#installCard').style.display = 'none';
+  });
+
   // ---------- Boot ----------
   async function boot() {
     await ensureSeeded();
