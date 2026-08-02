@@ -508,3 +508,95 @@ hr.rule { border: none; border-top: 1px solid var(--line); margin: 16px 0; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
+
+/* ==========================================================================
+   Desktop / wide-viewport layout
+   Below ~860px the app stays the mobile single-column layout with a bottom
+   tab bar. Above that, nav moves to a left rail, the dashboard's top cards
+   arrange in two columns, and sheets become centered dialogs instead of
+   bottom sheets.
+   ========================================================================== */
+
+.dash-grid-2 { display: block; }
+.dash-grid-2 > * + * { margin-top: 12px; }
+
+@media (min-width: 860px) {
+
+  body { background-image:
+    radial-gradient(circle at 30% -10%, rgba(201,162,75,0.07), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(244,239,227,0.015) 0px, rgba(244,239,227,0.015) 1px, transparent 1px, transparent 3px);
+  }
+
+  #app {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-left: 92px;
+    padding-bottom: 40px;
+  }
+
+  header.topbar {
+    box-sizing: content-box;
+  }
+
+  main { padding: 4px 0 40px; }
+
+  /* Sidebar rail instead of bottom tab bar */
+  nav.tabbar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    max-width: none;
+    width: 92px;
+    margin: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    padding: 24px 8px;
+    border-top: none;
+    border-right: 1px solid var(--line);
+    background: rgba(19, 27, 46, 0.7);
+  }
+  .tab {
+    flex: none;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: var(--radius-sm);
+  }
+  .tab.active { background: var(--brass-dim); }
+  .tab svg { width: 22px; height: 22px; }
+
+  .fab {
+    right: auto;
+    left: 24px;
+    bottom: 28px;
+  }
+
+  /* Two-column grid for the dashboard's top summary cards */
+  .dash-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+  .dash-grid-2 > * + * { margin-top: 0; }
+  .dash-grid-2 .gauge-row { height: 100%; }
+  .dash-grid-2 .card { height: 100%; }
+
+  /* Sheets become centered dialogs, not bottom sheets */
+  .sheet-backdrop { align-items: center; }
+  .sheet {
+    max-width: 440px;
+    border-radius: 20px;
+    border-bottom: 1px solid var(--line);
+    max-height: 84vh;
+  }
+}
+
+@media (min-width: 1180px) {
+  #app { max-width: 920px; }
+
+  /* At very wide viewports, let category chart + cost-of-living sit beside a third column of recent activity if present */
+  .two-col { grid-template-columns: 1fr 1fr 1fr; }
+}
